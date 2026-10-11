@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-night-950 font-body text-slate-300 antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-white;
+  }
+}
+
+@layer components {
+  /* Section anchors get breathing room below the fixed navbar */
+  .section-anchor {
+    @apply mx-auto w-full max-w-6xl scroll-mt-24 px-5 pb-20 sm:px-8 md:pb-28;
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-bold tracking-tight text-white sm:text-3xl;
+  }
+
+  .section-kicker {
+    @apply font-mono text-sm text-accent-blue;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/[0.06] bg-night-800/70 shadow-card transition-colors duration-300;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-xs text-slate-300;
+  }
+
+  /* Buttons ---------------------------------------------------------- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 font-display text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/[0.85] hover:shadow-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.02] px-5 py-3 font-display text-sm font-semibold text-slate-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue;
+  }
+}
+
+/* ============================================================
+   Animated name — slow colour wave across the hero headline.
+   Disabled automatically for prefers-reduced-motion.
+   ============================================================ */
+@keyframes name-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-name-shimmer {
+  animation: name-shimmer 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-name-shimmer {
+    animation: none;
+  }
+}
+
+/* Thin styled scrollbar for the dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f18;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2436;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3550;
+}
